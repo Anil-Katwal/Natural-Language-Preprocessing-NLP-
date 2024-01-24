@@ -9,79 +9,15 @@ for the tex preprocssing fallowa following step
 
 2.#Remove unimportant information (HTML-TAG) , URL and Punctuation.
 To remove the HTML tage , make a separate function 
-import re
-def html_tags(text):
-    pattern = re.compile('<.*?>')
-    return pattern.sub('', text)
 
 3. Remove URLS for example website link \htttp. or wwww.
-   to remove the URL link use following function
-   
- import re
-def remove_urls(text):
-    url_pattern = re.compile(r'https?://\S+|www\.\S+')
-    return url_pattern.sub('', text)
-text_with_urls = "Check out my website at https://www.example.com. For more information, visit http://anotherexample.com."
-text_without_urls = remove_urls(text_with_urls)
-print("Original text:", text_with_urls)
-print("Text without URLs:", text_without_urls)
-for the fast processing you can use this function.....
-def remove_punctuation(text):
-    return text.translate(str.maketrans('', '', string.punctuation))
-4 chart word Treatment for example Slang language Treatment.
- To get good insight about Slang language Use this function ..
- def chat_conversation(text):
-    new_text = []
-    chat_words = {"R": "are", "U": "you", "L8": "late", "BRB": "be right back"}
-    for word in text.split():
-        if word.upper() in chat_words:
-            new_text.append(chat_words[word.upper()])
-        else:
-            new_text.append(word)
-    return ' '.join(new_text)
-# Example usage:
-input_text = "R U coming or not? BRB, I'm L8."
-output_text = chat_conversation(input_text)
-
-print("Original text:", input_text)
-print("Converted text:", output_text)
+  
 
 5. **Spelling correction for text preprocessing.It handel the common types of general mistake....**
-   For the Spelling Correction, import TextBlob inbuilt library
-
    
- from textblob import TextBlob
-text_with_mistakes = "Thee quick brown fox jumpd ovver the lazy dog."
-blob = TextBlob(text_with_mistakes)
-corrected_text = blob.correct()
-
-print("Original Text:", text_with_mistakes)
-print("Corrected Text:", corrected_text)
-
-6. ** Remove the stop words
-   To remove Stop words , use corpus library
-   
-from nltk.corpus import stopwords
-import nltk
-nltk.download('stopwords')
-stop_words = set(stopwords.words('english'))
-print(stop_words)
-
 
 7.**Emoji Handeling 
-
-import emoji
-def remove_emojis(text):
-    cleaned_text = emoji.demojize(text)
-    cleaned_text = cleaned_text.replace(":", "")
-    return cleaned_text
-# Example usage:
-text_with_emojis = "Hello! 😊 How are you today? 🌟"
-text_without_emojis = remove_emojis(text_with_emojis)
-print("Original Text:", text_with_emojis)
-print("Text without Emojis:", text_without_emojis)
-
-Do not forget to install emoji....
+use inbuilt deemojization...
 
 8.#**Tokanization very important step of NLP**
 why tokanization is so important? It is helps to filter the number of Uniques words. while doing Tokenization alot challenges happen. for example $20 , New-york.....
